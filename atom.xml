@@ -3,11 +3,11 @@
   <title>TheValuePoint&#39;s Blog</title>
   
   <subtitle>欢迎来到theValuePoint的博客</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="http://thevaluepoint.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="http://thevaluepoint.github.io/"/>
   <updated>2024-10-18T15:19:17.477Z</updated>
-  <id>http://example.com/</id>
+  <id>http://thevaluepoint.github.io/</id>
   
   <author>
     <name>theValuePoint</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>ML#0.1 NumPy Basics Arrays and Vectorized Computation</title>
-    <link href="http://example.com/2024/10/18/ML-0-1-NumPy-Basics-Arrays-and-Vectorized-Computation/"/>
-    <id>http://example.com/2024/10/18/ML-0-1-NumPy-Basics-Arrays-and-Vectorized-Computation/</id>
+    <link href="http://thevaluepoint.github.io/2024/10/18/ML-0-1-NumPy-Basics-Arrays-and-Vectorized-Computation/"/>
+    <id>http://thevaluepoint.github.io/2024/10/18/ML-0-1-NumPy-Basics-Arrays-and-Vectorized-Computation/</id>
     <published>2024-10-18T14:57:11.000Z</published>
     <updated>2024-10-18T15:19:17.477Z</updated>
     
@@ -35,17 +35,17 @@
     
     
     
-    <category term="Machine Learning Notes" scheme="http://example.com/categories/Machine-Learning-Notes/"/>
+    <category term="Machine Learning Notes" scheme="http://thevaluepoint.github.io/categories/Machine-Learning-Notes/"/>
     
     
-    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    <category term="Python" scheme="http://thevaluepoint.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>My_First_Blog</title>
-    <link href="http://example.com/2024/09/25/My-First-Blog/"/>
-    <id>http://example.com/2024/09/25/My-First-Blog/</id>
+    <link href="http://thevaluepoint.github.io/2024/09/25/My-First-Blog/"/>
+    <id>http://thevaluepoint.github.io/2024/09/25/My-First-Blog/</id>
     <published>2024-09-25T09:51:44.000Z</published>
     <updated>2024-09-25T09:54:43.085Z</updated>
     
@@ -63,7 +63,7 @@
     
     
     
-    <category term="Daily" scheme="http://example.com/tags/Daily/"/>
+    <category term="Daily" scheme="http://thevaluepoint.github.io/tags/Daily/"/>
     
   </entry>
   
