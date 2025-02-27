@@ -22,6 +22,8 @@
             
             <tag> Nearest Neighbor Classification </tag>
             
+            <tag> Instance-based Algorithms </tag>
+            
         </tags>
       
     </entry>
@@ -49,6 +51,8 @@
             
             <tag> Matrix Analysis </tag>
             
+            <tag> Dimensionality Reduction Algorithms </tag>
+            
         </tags>
       
     </entry>
@@ -75,6 +79,8 @@
             <tag> SVD </tag>
             
             <tag> Matrix Analysis </tag>
+            
+            <tag> Dimensionality Reduction Algorithms </tag>
             
         </tags>
       
