@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="zh_CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>在博客里添加伪代码 | TheValuePoint's Blog</title><meta name="author" content="theValuePoint"><meta name="copyright" content="theValuePoint"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="作为人工智能学院的学生，我很多时候都会接触到伪代码，到了大三上学期上《算法设计与分析（双语）》这门课之后更是节节课接触伪代码。于是我打算在自己的博客里面添加TeX\TeXTE​X伪代码这个功能。事实上之前的博客也有些里面有伪代码，但是并不是TeX\TeXTE​X格式的，后面应该会慢慢把之前的博客改成TeX\TeXTE​X的伪代码。 在看了那么多诸位大佬的blog的情况下（基本上是围绕着添加CSS等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在博客里添加伪代码">
+<meta property="og:url" content="http://thevaluepoint.github.io/2025/09/20/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E9%87%8C%E6%B7%BB%E5%8A%A0%E4%BC%AA%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="TheValuePoint&#39;s Blog">
+<meta property="og:description" content="作为人工智能学院的学生，我很多时候都会接触到伪代码，到了大三上学期上《算法设计与分析（双语）》这门课之后更是节节课接触伪代码。于是我打算在自己的博客里面添加TeX\TeXTE​X伪代码这个功能。事实上之前的博客也有些里面有伪代码，但是并不是TeX\TeXTE​X格式的，后面应该会慢慢把之前的博客改成TeX\TeXTE​X的伪代码。 在看了那么多诸位大佬的blog的情况下（基本上是围绕着添加CSS等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://thevaluepoint.github.io/img/Luo.jpg">
+<meta property="article:published_time" content="2025-09-20T09:40:09.000Z">
+<meta property="article:modified_time" content="2025-09-20T10:06:30.387Z">
+<meta property="article:author" content="theValuePoint">
+<meta property="article:tag" content="Daily">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://thevaluepoint.github.io/img/Luo.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://thevaluepoint.github.io/2025/09/20/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E9%87%8C%E6%B7%BB%E5%8A%A0%E4%BC%AA%E4%BB%A3%E7%A0%81/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '在博客里添加伪代码',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-09-20 18:06:30'
+}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"
+    integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css">
+<script src="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"></script>
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="TheValuePoint's Blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/Luo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/Cover/LuoTianyi_13th_2.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">TheValuePoint's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">在博客里添加伪代码</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">在博客里添加伪代码</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-09-20T09:40:09.000Z" title="Created 2025-09-20 17:40:09">2025-09-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-09-20T10:06:30.387Z" title="Updated 2025-09-20 18:06:30">2025-09-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">498</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>2mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>作为人工智能学院的学生，我很多时候都会接触到伪代码，到了大三上学期上《算法设计与分析（双语）》这门课之后更是节节课接触伪代码。于是我打算在自己的博客里面添加<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>TeX</mtext></mrow><annotation encoding="application/x-tex">\TeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span>伪代码这个功能。事实上之前的博客也有些里面有伪代码，但是并不是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>TeX</mtext></mrow><annotation encoding="application/x-tex">\TeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span>格式的，后面应该会慢慢把之前的博客改成<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>TeX</mtext></mrow><annotation encoding="application/x-tex">\TeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span>的伪代码。</p>
+<p>在看了那么多诸位大佬的blog的情况下（基本上是围绕着添加CSS等），由于某校人工智能学院并不开设关于HTML、CSS、JS的课程，本人菜鸡一个，实在是搞不来那些操作，于是选择了<a target="_blank" rel="noopener" href="https://github.com/samuelhorwitz/markdown-it-pseudocodejs/tree/master">pseudocode.js</a>网站上的操作。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">inject:</span><br><span class="line">  head:</span><br><span class="line">    - |</span><br><span class="line">      &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"</span><br><span class="line">          integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA=="</span><br><span class="line">          crossorigin="anonymous" referrerpolicy="no-referrer"&gt;&lt;/script&gt;</span><br><span class="line">      &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css"&gt;</span><br><span class="line">      &lt;script src="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"&gt;&lt;/script&gt;</span><br><span class="line">  bottom:</span><br><span class="line">    - |</span><br><span class="line">      &lt;script&gt;</span><br><span class="line">      pseudocode.renderClass("pseudocode", {</span><br><span class="line">        lineNumber: true,</span><br><span class="line">        compact: true</span><br><span class="line">      });</span><br><span class="line">      &lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>在自己的文章里面添加如下代码：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span> <span class="attr">id</span>=<span class="string">"quicksort"</span> <span class="attr">class</span>=<span class="string">"pseudocode"</span>&gt;</span></span><br><span class="line">    \begin{algorithm}</span><br><span class="line">    \caption{Quicksort}</span><br><span class="line">    \begin{algorithmic}</span><br><span class="line">    \PROCEDURE{Quicksort}{$A, p, r$}</span><br><span class="line">        \IF{$p &lt; r$} </span><br><span class="line">            \STATE $q = $ \CALL{Partition}{$A, p, r$}</span><br><span class="line">            \STATE \CALL{Quicksort}{$A, p, q - 1$}</span><br><span class="line">            \STATE \CALL{Quicksort}{$A, q + 1, r$}</span><br><span class="line">        \ENDIF</span><br><span class="line">    \ENDPROCEDURE</span><br><span class="line">    \PROCEDURE{Partition}{$A, p, r$}</span><br><span class="line">        \STATE $x = A[r]$</span><br><span class="line">        \STATE $i = p - 1$</span><br><span class="line">        \FOR{$j = p$ \TO $r - 1$}</span><br><span class="line">            \IF{$A[j] &lt; x$}</span><br><span class="line">                \STATE $i = i + 1$</span><br><span class="line">                \STATE exchange</span><br><span class="line">                $A[i]$ with $A[j]$</span><br><span class="line">            \ENDIF</span><br><span class="line">            \STATE exchange $A[i]$ with $A[r]$</span><br><span class="line">        \ENDFOR</span><br><span class="line">    \ENDPROCEDURE</span><br><span class="line">    \end{algorithmic}</span><br><span class="line">    \end{algorithm}</span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>即可得到：</p>
+<pre id="quicksort" class="pseudocode">    \begin{algorithm}
+    \caption{Quicksort}
+    \begin{algorithmic}
+    \PROCEDURE{Quicksort}{$A, p, r$}
+        \IF{$p &lt; r$} 
+            \STATE $q = $ \CALL{Partition}{$A, p, r$}
+            \STATE \CALL{Quicksort}{$A, p, q - 1$}
+            \STATE \CALL{Quicksort}{$A, q + 1, r$}
+        \ENDIF
+    \ENDPROCEDURE
+    \PROCEDURE{Partition}{$A, p, r$}
+        \STATE $x = A[r]$
+        \STATE $i = p - 1$
+        \FOR{$j = p$ \TO $r - 1$}
+            \IF{$A[j] &lt; x$}
+                \STATE $i = i + 1$
+                \STATE exchange
+                $A[i]$ with $A[j]$
+            \ENDIF
+            \STATE exchange $A[i]$ with $A[r]$
+        \ENDFOR
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://thevaluepoint.github.io">theValuePoint</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://thevaluepoint.github.io/2025/09/20/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E9%87%8C%E6%B7%BB%E5%8A%A0%E4%BC%AA%E4%BB%A3%E7%A0%81/">http://thevaluepoint.github.io/2025/09/20/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E9%87%8C%E6%B7%BB%E5%8A%A0%E4%BC%AA%E4%BB%A3%E7%A0%81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Daily/">Daily</a><a class="post-meta__tags" href="/tags/Blog/">Blog</a></div><div class="post-share"><div class="social-share" data-image="/img/Luo.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="next-post pull-full" href="/2025/07/20/ML-9-%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/" title="ML#9 集成学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">ML#9 集成学习</div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a href="/2024/09/25/My-First-Blog/" title="My_First_Blog"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-25</div><div class="title">My_First_Blog</div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/Luo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">theValuePoint</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/TheValuePoint"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/20/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E9%87%8C%E6%B7%BB%E5%8A%A0%E4%BC%AA%E4%BB%A3%E7%A0%81/" title="在博客里添加伪代码">在博客里添加伪代码</a><time datetime="2025-09-20T09:40:09.000Z" title="Created 2025-09-20 17:40:09">2025-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/20/ML-9-%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/" title="ML#9 集成学习">ML#9 集成学习</a><time datetime="2025-07-20T07:45:00.000Z" title="Created 2025-07-20 15:45:00">2025-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/14/DL-4-%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="DL#4 循环神经网络">DL#4 循环神经网络</a><time datetime="2025-07-14T08:30:00.000Z" title="Created 2025-07-14 16:30:00">2025-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/13/DL-3-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="DL#3 卷积神经网络">DL#3 卷积神经网络</a><time datetime="2025-07-12T17:05:00.000Z" title="Created 2025-07-13 01:05:00">2025-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/10/ML-8-%E5%86%B3%E7%AD%96%E6%A0%91/" title="ML#8 决策树">ML#8 决策树</a><time datetime="2025-07-10T13:00:00.000Z" title="Created 2025-07-10 21:00:00">2025-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By theValuePoint</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Toggle Between Traditional and Simplified Chinese">繁</button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script></div><script>
+pseudocode.renderClass("pseudocode", {
+  lineNumber: true,
+  compact: true
+});
+</script>
+<script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

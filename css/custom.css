@@ -1,0 +1,17 @@
+@import url('https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css');
+
+.pseudocode-container .ps-line {
+    position: relative;
+    padding-left: 2.5em !important;
+    text-indent: 0 !important;
+}
+.pseudocode-container .ps-linenum {
+    position: absolute !important;
+    /* 不强制 left: 0，保留 JS 计算的 left，兼容多层嵌套 */
+    min-width: 2em;
+    text-align: right;
+    white-space: nowrap;
+    color: #607080;
+    font-variant-numeric: tabular-nums;
+    line-height: inherit;
+}
