@@ -3,3 +3,31 @@
     font-display: swap;
     src: url('../font/JetBrainsMono-Regular.ttf') format("truetype");
 }
+
+@font-face {
+    font-family: 'JetBrains Mono Italic';
+    font-display: swap;
+    src: url('../font/JetBrainsMono-Italic.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'HarmonyOS Sans SC';
+    font-display: swap;
+    src: url('../font/HarmonyOS_Sans_SC_Regular.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'HarmonyOS Sans TC';
+    font-display: swap;
+    src: url('../font/HarmonyOS_Sans_TC_Regular.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'HarmonyOS Sans Italic';
+    font-display: swap;
+    src: url('../font/HarmonyOS_Sans_Italic.ttf') format("truetype");
+}
+
+body {
+    font-family: 'JetBrains Mono','JetBrains Mono Italic','HarmonyOS Sans SC','HarmonyOS Sans TC','HarmonyOS Sans Italic', monospace;
+}
