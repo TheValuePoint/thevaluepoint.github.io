@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CS336课设实战:利用Rust加速Python | TheValuePoint's Blog</title><meta name="author" content="theValuePoint"><meta name="copyright" content="theValuePoint"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在写CS336 Assignment 1的时候发现 123456789101112def merge(indices: list[int], pair: tuple[int, int], new_index: int) -&gt; list[int]:    &quot;&quot;&quot;Return &#96;indices&#96;, but with all instances of &#96;pair&#96; replaced with &#96;n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS336课设实战:利用Rust加速Python">
+<meta property="og:url" content="http://thevaluepoint.github.io/2025/11/02/CS336%E8%AF%BE%E8%AE%BE%E5%AE%9E%E6%88%98-%E5%88%A9%E7%94%A8Rust%E5%8A%A0%E9%80%9FPython/index.html">
+<meta property="og:site_name" content="TheValuePoint&#39;s Blog">
+<meta property="og:description" content="在写CS336 Assignment 1的时候发现 123456789101112def merge(indices: list[int], pair: tuple[int, int], new_index: int) -&gt; list[int]:    &quot;&quot;&quot;Return &#96;indices&#96;, but with all instances of &#96;pair&#96; replaced with &#96;n">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://thevaluepoint.github.io/img/Luo.jpg">
+<meta property="article:published_time" content="2025-11-02T14:00:00.000Z">
+<meta property="article:modified_time" content="2025-11-02T14:41:20.894Z">
+<meta property="article:author" content="theValuePoint">
+<meta property="article:tag" content="Daily">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Rust">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://thevaluepoint.github.io/img/Luo.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://thevaluepoint.github.io/2025/11/02/CS336%E8%AF%BE%E8%AE%BE%E5%AE%9E%E6%88%98-%E5%88%A9%E7%94%A8Rust%E5%8A%A0%E9%80%9FPython/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CS336课设实战:利用Rust加速Python',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-11-02 22:41:20'
+}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"
+    integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css">
+<script src="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"></script>
+<link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="TheValuePoint's Blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/Luo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/Cover/LuoTianyi_cover1.jpeg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">TheValuePoint's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">CS336课设实战:利用Rust加速Python</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">CS336课设实战:利用Rust加速Python</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-02T14:00:00.000Z" title="发表于 2025-11-02 22:00:00">2025-11-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-02T14:41:20.894Z" title="更新于 2025-11-02 22:41:20">2025-11-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">441</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在写CS336 Assignment 1的时候发现</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">indices: <span class="built_in">list</span>[<span class="built_in">int</span>], pair: <span class="built_in">tuple</span>[<span class="built_in">int</span>, <span class="built_in">int</span>], new_index: <span class="built_in">int</span></span>) -&gt; <span class="built_in">list</span>[<span class="built_in">int</span>]:</span><br><span class="line">    <span class="string">"""Return `indices`, but with all instances of `pair` replaced with `new_index`."""</span></span><br><span class="line">    new_indices = []</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(indices):</span><br><span class="line">        <span class="keyword">if</span> i + <span class="number">1</span> &lt; <span class="built_in">len</span>(indices) <span class="keyword">and</span> indices[i] == pair[<span class="number">0</span>] <span class="keyword">and</span> indices[i + <span class="number">1</span>] == pair[<span class="number">1</span>]: <span class="comment"># 当前索引和下一个索引匹配pair</span></span><br><span class="line">            new_indices.append(new_index)</span><br><span class="line">            i += <span class="number">2</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            new_indices.append(indices[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> new_indices</span><br></pre></td></tr></tbody></table></figure>
+<p>这个函数运行情况如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   ncalls  tottime  percall  cumtime  percall filename:lineno(function)</span><br><span class="line">135040250  110.687    0.000  161.293    0.000 train_tokenizer.py:26(merge)</span><br><span class="line">      743   49.224    0.066   59.760    0.080 train_tokenizer.py:39(get_stats)</span><br><span class="line">        1   23.879   23.879  245.661  245.661 train_tokenizer.py:55(train_bpe)</span><br></pre></td></tr></tbody></table></figure>
+<p>要尽可能的减少BPE的训练时间，正所谓“哪里有需求，哪里就有优化”。于是我打算使用Rust重写该函数。</p>
+<p>视频参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1K6HjeTEKR/?vd_source=3645d8bc34bbb3799e052397866fbbf6">利用Rust加速Python：PyO3与maturin实践方法</a>。目前还没能在该项目利用maturin成功调用Rust编写的函数，原因未知。所以目前只能用土办法来实现用Rust加速Python。</p>
+<p>首先应该在该文件下创建一个Rust项目</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo init</span><br></pre></td></tr></tbody></table></figure>
+<p>在Cargo.toml里面配置</p>
+<figure class="highlight toml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[package]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">"cs336_basics"</span></span><br><span class="line"><span class="attr">version</span> = <span class="string">"0.0.1"</span></span><br><span class="line"><span class="attr">edition</span> = <span class="string">"2024"</span></span><br><span class="line"></span><br><span class="line"><span class="section">[lib]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">"cs336_basics"</span></span><br><span class="line"><span class="attr">crate-type</span> = [<span class="string">"cdylib"</span>]</span><br><span class="line"></span><br><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[dependencies.pyo3]</span></span><br><span class="line"><span class="attr">version</span> = <span class="string">"0.27.1"</span></span><br><span class="line"><span class="attr">features</span> = [<span class="string">"extension-module"</span>]</span><br></pre></td></tr></tbody></table></figure>
+<p>在<code>src\lib.rs</code>下实现你想要实现的函数，例如</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> pyo3::prelude::*;</span><br><span class="line"><span class="keyword">use</span> pyo3::wrap_pyfunction;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 计算斐波那契数列的 Rust 实现</span></span><br><span class="line"><span class="meta">#[pyfunction]</span></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">fib</span>(n: <span class="type">u32</span>) <span class="punctuation">-&gt;</span> PyResult&lt;<span class="type">u32</span>&gt; {</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">result</span> = <span class="keyword">match</span> n {</span><br><span class="line">        <span class="number">0</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="number">1</span> =&gt; <span class="number">1</span>,</span><br><span class="line">        _ =&gt; <span class="title function_ invoke__">fib</span>(n - <span class="number">1</span>)? + <span class="title function_ invoke__">fib</span>(n - <span class="number">2</span>)?,</span><br><span class="line">    };</span><br><span class="line">    <span class="title function_ invoke__">Ok</span>(result)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/// Python 模块</span></span><br><span class="line"><span class="meta">#[pymodule]</span></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">cs336_basics</span>(m: &amp;Bound&lt;<span class="symbol">'_</span>, PyModule&gt;) <span class="punctuation">-&gt;</span> PyResult&lt;()&gt; {</span><br><span class="line">    m.<span class="title function_ invoke__">add_function</span>(wrap_pyfunction!(fib, m)?)?;</span><br><span class="line">    <span class="title function_ invoke__">Ok</span>(())</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>在命令行里面输入</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo build --release</span><br></pre></td></tr></tbody></table></figure>
+<p>在<code>target\release</code>里面找到<code>xxx.dll</code>文件（Linux为<code>xxx.so</code>）并将其后缀改为<code>.pyd</code>，移动到Python代码的文件夹里面即可运行。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test.py</span></span><br><span class="line"><span class="keyword">import</span> cs336_basics</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(cs336_basics.fib(<span class="number">10</span>))  <span class="comment"># 应该输出 55</span></span><br></pre></td></tr></tbody></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://thevaluepoint.github.io">theValuePoint</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://thevaluepoint.github.io/2025/11/02/CS336%E8%AF%BE%E8%AE%BE%E5%AE%9E%E6%88%98-%E5%88%A9%E7%94%A8Rust%E5%8A%A0%E9%80%9FPython/">http://thevaluepoint.github.io/2025/11/02/CS336%E8%AF%BE%E8%AE%BE%E5%AE%9E%E6%88%98-%E5%88%A9%E7%94%A8Rust%E5%8A%A0%E9%80%9FPython/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://thevaluepoint.github.io" target="_blank">TheValuePoint's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Daily/">Daily</a><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/Rust/">Rust</a></div><div class="post-share"><div class="social-share" data-image="/img/Luo.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="next-post pull-full" href="/2025/10/29/LLM-1-Tokenization/" title="LLM#1 Tokenization"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">LLM#1 Tokenization</div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a href="/2024/09/25/My-First-Blog/" title="My_First_Blog"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-25</div><div class="title">My_First_Blog</div></div></a><a href="/2025/09/20/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E9%87%8C%E6%B7%BB%E5%8A%A0%E4%BC%AA%E4%BB%A3%E7%A0%81/" title="在博客里添加伪代码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-20</div><div class="title">在博客里添加伪代码</div></div></a><a href="/2024/10/18/ML-0-1-NumPy-Basics-Arrays-and-Vectorized-Computation/" title="ML#0.1 NumPy Basics Arrays and Vectorized Computation"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-18</div><div class="title">ML#0.1 NumPy Basics Arrays and Vectorized Computation</div></div></a><a href="/2024/10/23/ML-0-2-Getting-Started-with-pandas/" title="ML#0.2 Getting Started with pandas"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-23</div><div class="title">ML#0.2 Getting Started with pandas</div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/Luo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">theValuePoint</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/TheValuePoint"><i class="fab fa-github"></i><span>关注</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/02/CS336%E8%AF%BE%E8%AE%BE%E5%AE%9E%E6%88%98-%E5%88%A9%E7%94%A8Rust%E5%8A%A0%E9%80%9FPython/" title="CS336课设实战:利用Rust加速Python">CS336课设实战:利用Rust加速Python</a><time datetime="2025-11-02T14:00:00.000Z" title="发表于 2025-11-02 22:00:00">2025-11-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/29/LLM-1-Tokenization/" title="LLM#1 Tokenization">LLM#1 Tokenization</a><time datetime="2025-10-29T11:43:11.000Z" title="发表于 2025-10-29 19:43:11">2025-10-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/20/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E9%87%8C%E6%B7%BB%E5%8A%A0%E4%BC%AA%E4%BB%A3%E7%A0%81/" title="在博客里添加伪代码">在博客里添加伪代码</a><time datetime="2025-09-20T09:40:09.000Z" title="发表于 2025-09-20 17:40:09">2025-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/20/ML-9-%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/" title="ML#9 集成学习">ML#9 集成学习</a><time datetime="2025-07-20T07:45:00.000Z" title="发表于 2025-07-20 15:45:00">2025-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/14/DL-4-%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="DL#4 循环神经网络">DL#4 循环神经网络</a><time datetime="2025-07-14T08:30:00.000Z" title="发表于 2025-07-14 16:30:00">2025-07-14</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By theValuePoint</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script></div><script>
+pseudocode.renderClass("pseudocode", {
+  lineNumber: true,
+  compact: true
+});
+</script>
+<script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
